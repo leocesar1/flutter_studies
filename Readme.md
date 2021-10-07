@@ -1,7 +1,7 @@
 # Flutter Studies
 
 Projects:
- - 01) People Counter
+ - People Counter
     In this project was studied about:
     * In this project it was studied about:
     * column
