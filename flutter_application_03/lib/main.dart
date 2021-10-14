@@ -144,7 +144,6 @@ class _HomeState extends State<Home> {
 
   double _dolar = 0.0;
   double _euro = 0.0;
-  double _real = 0.0;
   double _btc = 0.0;
 
   @override
