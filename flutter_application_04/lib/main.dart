@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:io';
-import 'dart:async';
-import "dart:convert";
+// import 'package:path_provider/path_provider.dart';
+// import 'dart:io';
+// import 'dart:async';
+// import "dart:convert";
 
 void main() {
   runApp(MaterialApp(
@@ -22,7 +22,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Lista de Tarefas"), centerTitle: true),
+      appBar: AppBar(
+        title: Text("Lista de Tarefas"),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [Text("data")],
+        ),
+      ),
     );
   }
 
