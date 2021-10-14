@@ -34,3 +34,13 @@ Projects:
 
    In this project was studied about requests, API acess and:
    * Future Build
+
+ - **04) To do List**
+
+    ![](flutter_application_04/Project04.gif)
+
+   In this project was studied about requests, mobile and desktop file acess and:
+   * Widgets to list
+   * Scaffold Messenger
+   * Snackbar
+   * Refresh indicator
