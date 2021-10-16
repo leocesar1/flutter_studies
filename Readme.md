@@ -39,8 +39,17 @@ Projects:
 
     ![](flutter_application_04/Project04.gif)
 
-   In this project was studied about requests, mobile and desktop file acess and:
+   In this project was studied about requests, mobile and desktop file access and:
    * Widgets to list
    * Scaffold Messenger
    * Snackbar
    * Refresh indicator
+
+ - **05) Gif searcher**
+
+    ![](flutter_application_05/Project05.gif)
+
+   In this project was studied about:
+   * Multiple pages and routes for
+   * Split app in multiples files
+   
