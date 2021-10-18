@@ -35,6 +35,7 @@ Projects:
    In this project was studied about requests, API acess and:
    * Future Build
 
+&nbsp;
  - **04) To do List**
 
     ![](flutter_application_04/Project04.gif)
@@ -45,6 +46,7 @@ Projects:
    * Snackbar
    * Refresh indicator
 
+&nbsp;
  - **05) Gif searcher**
 
     ![](flutter_application_05/Project05.gif)
@@ -52,4 +54,7 @@ Projects:
    In this project was studied about:
    * Multiple pages and routes for
    * Split app in multiples files
-   
+
+&nbsp;
+ - **06) Contact manager** - In progress...
+    
