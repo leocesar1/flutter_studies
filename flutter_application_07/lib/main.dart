@@ -1,53 +1,91 @@
 import 'package:flutter/material.dart';
+import 'chat_screen.dart';
 
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: App()));
+  runApp(MaterialApp(
+      home: App(),
+      title: 'Chat Flutter',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          iconTheme: IconThemeData(
+            color: Colors.blue,
+          ))));
 }
 
-/// We are using a StatefulWidget such that we only create the [Future] once,
-/// no matter how many times our widget rebuild.
-/// If we used a [StatelessWidget], in the event where [App] is rebuilt, that
-/// would re-initialize FlutterFire and make our application re-enter loading state,
-/// which is undesired.
 class App extends StatefulWidget {
-  // Create the initialization Future outside of `build`:
-  @override
   _AppState createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-  /// The future is part of the state of our widget. We should not call `initializeApp`
-  /// directly inside [build].
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  // Set default `_initialized` and `_error` state to false
+  bool _initialized = false;
+  bool _error = false;
+
+  // Define an async function to initialize FlutterFire
+  void initializeFlutterFire() async {
+    try {
+      // Wait for Firebase to initialize and set `_initialized` state to true
+      await Firebase.initializeApp();
+      setState(() {
+        _initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      // Set `_error` state to true if Firebase initialization fails
+      setState(() {
+        _error = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    initializeFlutterFire();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      // Initialize FlutterFire:
-      future: _initialization,
-      builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          print("erro");
-          return Container(child: Text("Erro"));
-        }
+    // Show error message if initialization failed
+    if (_error) {
+      return Container(child: Text("ERRO"));
+    }
 
-        // Once complete, show your application
-        if (snapshot.connectionState == ConnectionState.done) {
-          print("foi");
-          return Container(child: Text("Foi"));
-        }
+    // Show a loader until FlutterFire is initialized
+    if (!_initialized) {
+      return Container(child: Text("CARREGANDO"));
+    }
 
-        print("carregando");
-        // Otherwise, show something whilst waiting for initialization to complete
-        return Container(
-          child: Text("Carregando"),
-        );
-      },
-    );
+    // FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference col = FirebaseFirestore.instance.collection('col');
+
+    return ChatScreen();
+    // return FutureBuilder<DocumentSnapshot>(
+    //   future: col.doc('doc').get(),
+    //   builder:
+    //       (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    //     if (snapshot.hasError) {
+    //       return Text("Something went wrong");
+    //     }
+
+    //     if (snapshot.hasData && !snapshot.data!.exists) {
+    //       return Text("Document does not exist");
+    //     }
+
+    //     if (snapshot.connectionState == ConnectionState.done) {
+    //       Map<String, dynamic> data =
+    //           snapshot.data!.data() as Map<String, dynamic>;
+    //       return Text("Full Name: ${data['full_name']} ${data['last_name']}");
+    //     }
+
+    //     return Text("loading");
+    //   },
+    // );
   }
 }
