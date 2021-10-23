@@ -63,7 +63,7 @@ class _AppState extends State<App> {
     }
 
     // FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference col = FirebaseFirestore.instance.collection('col');
+    CollectionReference col = FirebaseFirestore.instance.collection('messages');
 
     return ChatScreen();
     // return FutureBuilder<DocumentSnapshot>(
