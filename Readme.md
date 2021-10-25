@@ -58,3 +58,11 @@ Projects:
 &nbsp;
  - **06) Contact manager** - In progress...
     
+&nbsp;
+ - **07) Flutter Chat**
+
+   ![](flutter_application_07/Project07.gif)
+
+   In this project was studied about:
+   * Firebase;
+   * Google authentication.
